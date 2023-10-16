@@ -16,6 +16,14 @@ const routes: Routes = [
     loadChildren: () => import('./modules/preventivo/preventivo.module').then(m => m.PreventivoModule),
   },
   {
+    path: 'servizi',
+    loadChildren: () => import('./modules/servizi/servizi.module').then(m => m.ServiziModule),
+  },
+  {
+    path: 'chiSiamo',
+    loadChildren: () => import('./modules/servizi/servizi.module').then(m => m.ServiziModule),
+  },
+  {
     path: '**',
     redirectTo: '/home',
   },

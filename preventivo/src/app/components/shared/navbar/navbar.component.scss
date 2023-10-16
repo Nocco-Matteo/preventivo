@@ -1,0 +1,60 @@
+
+@import '../../../../assets/css/flag-icons.min.css';
+@import '../../../../assets/styles/variables.scss';
+
+:host {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+mat-toolbar {
+  height: $navbar-height;
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+  box-shadow: none;
+  
+  .logo img {
+    height: 40px;
+  }
+  .voci {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    a {
+      position: relative;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    //underline
+    a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      height: 3px;
+      width: 0;
+      background-color: currentColor;
+      transition: all 0.3s ease;
+    }
+
+    a:hover::after {
+      width: 100%;
+    }
+  }
+
+  .language-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+}
+
+//rimozione opacity di angular material
+::ng-deep a span::before {
+  opacity: 0 !important;
+}

@@ -1,0 +1,9 @@
+{
+  "NAVBAR": {
+    "HOME": "Home",
+    "PREVENTIVO": "Estimate",
+    "CONTATTI": "Contacts",
+    "SERVIZI": "Services"
+  },
+  "PREVENTIVO": {}
+}

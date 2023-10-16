@@ -1,0 +1,12 @@
+{
+  "NAVBAR": {
+    "HOME": "Home",
+    "CONTATTI": "Contatti",
+    "SERVIZI": "Servizi"
+  },
+  "LANGUAGES": {
+    "ITALIANO": "Italiano",
+    "INGLESE": "Inglese"
+  },
+  "PREVENTIVO": {}
+}

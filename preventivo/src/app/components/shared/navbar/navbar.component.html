@@ -1,0 +1,34 @@
+<mat-toolbar>
+  <!-- LOGO -->
+  <span class="logo">
+    <img src="assets/imgs/polishCow.png">
+  </span>
+
+  <!-- ELEMENTI CENTRALI -->
+  <div class="voci">
+    <ng-container *ngFor="let voce of voci">
+      <a mat-button
+         [routerLink]="[voce.url]">
+        {{voce.voce | translate}}
+      </a>
+    </ng-container>
+
+  </div>
+  <!-- MENU per il cambio lingua -->
+  <button mat-icon-button
+          [matMenuTriggerFor]="languageMenu"
+          class="language-button">
+    <span class="flag-icon {{ currentLanguage.css }}"></span>
+  </button>
+
+  <mat-menu #languageMenu="matMenu">
+    <ng-container *ngFor="let lang of languages">
+      <button mat-menu-item
+              (click)="switchLanguage(lang)">
+        <span class="flag-icon {{ lang.css }}"></span>
+        {{ lang.label | translate }}
+      </button>
+    </ng-container>
+  </mat-menu>
+
+</mat-toolbar>

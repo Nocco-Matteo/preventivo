@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { take, takeWhile } from 'rxjs';
-import { Domanda, Risposta } from 'src/app/models/preventivo.model';
+import { takeWhile } from 'rxjs';
+import { Domanda } from 'src/app/models/preventivo.model';
 import { ADD_RISPOSTA, LOAD_DOMANDE } from 'src/app/store/actions/preventivo.actions';
-import { selectDomande, selectRisposte } from 'src/app/store/selectors/preventivo.selectors';
+import { selectDomande } from 'src/app/store/selectors/preventivo.selectors';
 import { AppState } from 'src/app/store/state';
 
 @Component({

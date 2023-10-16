@@ -1,4 +1,5 @@
 export const environment = {
-    apiUrl : "https://giocoevento.duckdns.org/api",
-    production : false
+    apiUrl : `http://localhost:2501/api`,
+    production : false,
+    assetsPathPrefixAppModule: '../assets'
 };
