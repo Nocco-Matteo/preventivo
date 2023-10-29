@@ -12,11 +12,13 @@ import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-transla
 import { HttpClient } from '@angular/common/http';
 import { HttpLoaderFactory } from '../configs/shared.config';
 import { RouterModule } from '@angular/router';
+import { ScrolljackingDirective } from '../directives/scroll-jacking.directive';
 
 @NgModule({
   declarations: [
     BoxComponent,
-    NavbarComponent
+    NavbarComponent,
+    ScrolljackingDirective
   ],
   imports: [
     CommonModule,
@@ -36,11 +38,15 @@ import { RouterModule } from '@angular/router';
       }
     })
   ],
-  exports: [BoxComponent, NavbarComponent]
+  exports: [
+    BoxComponent,
+    NavbarComponent,
+    ScrolljackingDirective
+  ]
 })
-export class SharedModule { 
+export class SharedModule {
 
-  constructor(private readonly translateService: TranslateService){
+  constructor(private readonly translateService: TranslateService) {
     //default language
     translateService.setDefaultLang('it');
     translateService.use('it');

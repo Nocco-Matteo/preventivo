@@ -2,10 +2,9 @@
 
 .blocco {
   height: 100vh;
+  display: flex;
 }
 
-.primo-blocco {
-  display: flex;
   .parte-sinistra,
   .parte-destra {
     max-width: 50%;
@@ -37,6 +36,7 @@
     }
     mat-card-header {
       margin-bottom: 16px;
+      justify-content: center;
     }
     .actions {
       margin-top: 10px;
@@ -45,12 +45,9 @@
       justify-content: center;
       align-items: center;
     }
-  }
+  
 
   .parte-destra {
-    padding-right: 10%;
-    img {
-      height: 300px;
-    }
+   
   }
 }

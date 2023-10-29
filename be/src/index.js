@@ -7,11 +7,10 @@ function createRouter() {
   const router = express.Router();
   const owner = '';
 
-  router.get('/getSezioniPreventivo', async function (req,res,next){
+  router.get('/getSezioniPreventivo', async function (req, res, next) {
     try {
-      
-      const response = [
-        {
+
+      const response = [{
           "id": 1,
           "voce": "L’app è da creare da zero o ne esiste una da modificare?",
           "risposte": ["Da creare da zero", "Da modificare"]
@@ -80,19 +79,21 @@ function createRouter() {
           "id": 14,
           "voce": "Quali sono le tue aspettative per il supporto e la manutenzione dell’app dopo il lancio? Ad esempio, prevedi di avere bisogno di aggiornamenti regolari dell’app? Ci sono funzionalità che potresti voler aggiungere in futuro? Come vorresti gestire eventuali problemi o bug che potrebbero sorgere?",
           "risposte": ["Aggiornamenti regolari", "Aggiunta di nuove funzionalità in futuro",
-            "Gestione dei problemi o bug", "Tutte le opzioni"]
+            "Gestione dei problemi o bug", "Tutte le opzioni"
+          ]
         },
         {
           "id": 15,
           "voce": "Descrivi gli obiettivi principali dell’applicazione",
           "risposte": ["Aumentare l'efficienza operativa",
             "Migliorare l'esperienza dell'utente",
-            "Espandere la base di clienti"]
+            "Espandere la base di clienti"
+          ]
         }
       ]
       res.json(response)
     } catch (error) {
-      
+
     }
   })
 
@@ -105,7 +106,7 @@ const startServer = () => {
   const app = express()
     .use(cors())
     .use(bodyParser.json())
-    .use('/api', createRouter()); 
+    .use('/api', createRouter());
 
   app.listen(port, () => {
     console.log(`Server Express in ascolto sulla porta ${port}`);

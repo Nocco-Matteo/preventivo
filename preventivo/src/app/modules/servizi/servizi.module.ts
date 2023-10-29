@@ -6,9 +6,10 @@ import { ServiziRoutingModule } from './servizi-routing.module';
 import { MatCardModule } from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { PuzzleComponent } from 'src/app/components/pages/servizi/puzzle/puzzle.component';
 
 @NgModule({
-  declarations: [ServiziComponent],
+  declarations: [ServiziComponent, PuzzleComponent],
   imports: [
     CommonModule,
     SharedModule,

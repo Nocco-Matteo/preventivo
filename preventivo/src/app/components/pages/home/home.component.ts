@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.showText();
     let videoElement : HTMLVideoElement = document.querySelector('.video')!;
-    // videoElement.muted = true;
+    videoElement.muted = true;
   }
 
   showText() {
