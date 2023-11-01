@@ -8,32 +8,33 @@ export class ScrolljackingDirective {
   blockScrolling: boolean = false;
   targetScroll: number = 0;
   currentScroll: number = 0;
+  totalBlocks: number = 4;
 
   constructor() { }
 
   @HostListener('window:wheel', ['$event'])
   onWheelEvent(event: WheelEvent): void {
     event.preventDefault();
-  
+
     const windowHeight = window.innerHeight;
     const currentHeight = document.documentElement.scrollTop;
-    const tolerance = 75;  // Distanza di tolleranza
+    const tolerance = 100;  // Distanza di tolleranza
 
     const isWithinTolerance = (height: number, target: number) => {
       return Math.abs(height - target) < tolerance;
     };
-  
+
     // Trova il blocco corrente e il blocco successivo o precedente
     let currentBlock = Math.round(currentHeight / windowHeight);
     let nextBlock = event.deltaY < 0 ? currentBlock - 1 : currentBlock + 1;
-    nextBlock = Math.max(0, Math.min(nextBlock, 3));  // Assicura che nextBlock sia tra 0 e 3
-  
+    nextBlock = Math.max(0, Math.min(nextBlock, this.totalBlocks - 1));  // Assicura che nextBlock sia tra 0 e 3
+
     // Verifica se la posizione corrente è entro la tolleranza dal blocco corrente o dal blocco successivo/precedente
     if (isWithinTolerance(currentHeight, currentBlock * windowHeight) ||
-        isWithinTolerance(currentHeight, nextBlock * windowHeight)) {
+      isWithinTolerance(currentHeight, nextBlock * windowHeight)) {
       return;  // Non attivare lo scrolljacking se entro la tolleranza
     }
-  
+
     if (!this.blockScrolling) {
       this.blockScrolling = true;
       this.currentScroll = currentHeight;
@@ -41,12 +42,10 @@ export class ScrolljackingDirective {
       this.animateScroll();
     }
   }
-  
 
-
-  animateScroll(): void {
+  private animateScroll(): void {
     const startTime = performance.now();
-    const duration = 500;  // Durata dell'animazione in millisecondi
+    const duration = 600;  // Durata dell'animazione in millisecondi
 
     const animate = (currentTime: number) => {
       const elapsedTime = currentTime - startTime;
@@ -66,10 +65,9 @@ export class ScrolljackingDirective {
     requestAnimationFrame(animate);
   }
 
-  calculateDelta(event: WheelEvent): number {
+  private calculateDelta(event: WheelEvent): number {
     const windowHeight = window.innerHeight;
     const currentHeight = document.documentElement.scrollTop;
-    const totalBlocks = 4;
     let currentBlock = Math.round(currentHeight / windowHeight);
 
     if (event.deltaY < 0) {
@@ -79,7 +77,7 @@ export class ScrolljackingDirective {
       }
     } else {
       // Scrolling verso il basso
-      if (currentBlock < totalBlocks - 1) {  // Verifica se non sei già nell'ultimo blocco
+      if (currentBlock < this.totalBlocks - 1) {  // Verifica se non sei già nell'ultimo blocco
         currentBlock += 1;  // Vai al blocco successivo
       }
     }

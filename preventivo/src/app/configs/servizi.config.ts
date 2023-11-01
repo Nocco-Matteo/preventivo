@@ -7,6 +7,13 @@ export enum StatiPuzzle {
     downLeft = "downLeft",
     downRight = "downRight",
     disappear = "disappear",
-    final = "final",
+    final1 = "final1",
+    final2 = "final2",
+    final3 = "final3",
+    final4 = "final4",
+    rightFast = "rightFast",
+    leftFast = "leftFast",
+    downLeftFast = "downLeftFast",
+    downRightFast = "downRightFast",
     startPosition = "start"
 }

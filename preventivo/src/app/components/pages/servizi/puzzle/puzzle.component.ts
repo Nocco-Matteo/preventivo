@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostBinding, HostListener, Input, OnInit, Output } from '@angular/core';
 import { PUZZLE_ANIMATION } from 'src/app/animations/animations';
 import { StatiPuzzle } from 'src/app/configs/servizi.config';
 
@@ -14,53 +14,90 @@ export class PuzzleComponent implements OnInit {
   pezzo2state: StatiPuzzle = StatiPuzzle.startPosition;
   pezzo3state: StatiPuzzle = StatiPuzzle.startPosition;
   pezzo4state: StatiPuzzle = StatiPuzzle.startPosition;
-  containerState?: StatiPuzzle;
 
   scrollBarPosition: number = 0;
   viewHeight: number = window.innerHeight;
 
+  @Output() showLastButton: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @HostBinding('style.position') position = 'fixed';
+  @HostBinding('style.top') top = '0px';
+
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(event?: Event) {
     console.log("pos: ", this.scrollBarPosition);
+    let stopPoint = this.viewHeight * 2; 
 
+    if (window.scrollY >= stopPoint) {
+      this.position = 'absolute';
+      this.top = stopPoint + 'px';
+    } else {
+      this.position = 'fixed';
+      this.top = '0px';
+    }
+    //scroll verso il basso
     if (this.scrollBarPosition < window.document.documentElement.scrollTop) {
-      //scroll verso il basso
       this.scrollBarPosition = window.document.documentElement.scrollTop;
 
       // if (this.scrollBarPosition < this.viewHeight) {
       //   this.pezzo1state = StatiPuzzle.right
       //   this.pezzo2state = StatiPuzzle.left
       // }
-      if (this.scrollBarPosition > 0 && this.scrollBarPosition < this.viewHeight) {
+      if (this.scrollBarPosition > (this.viewHeight * 0.5) && this.scrollBarPosition < this.viewHeight) {
         this.pezzo3state = StatiPuzzle.downLeft
       }
       else if (this.scrollBarPosition > (this.viewHeight * 1.5) && this.scrollBarPosition < (this.viewHeight * 2.5)) {
         if (this.pezzo3state !== StatiPuzzle.downLeft) {
           this.pezzo3state = StatiPuzzle.downLeft
+          setTimeout(() => {
+            this.pezzo4state = StatiPuzzle.downRight
+          }, 150);
         }
-        this.pezzo4state = StatiPuzzle.downRight
+        else {
+
+          this.pezzo4state = StatiPuzzle.downRight
+        }
       }
-      else if (this.scrollBarPosition > (this.viewHeight * 2.5)) {
-        console.log("ultimo blocco");
-      }
-    } else {
-      //scroll verso l'alto
+      // else if (this.scrollBarPosition > (this.viewHeight * 2.5)) {
+      //   this.pezzo1state = StatiPuzzle.final1
+      //   this.pezzo2state = StatiPuzzle.final2
+      //   this.pezzo3state = StatiPuzzle.final3
+      //   this.pezzo4state = StatiPuzzle.final4
+
+      //   setTimeout(() => {
+      //     this.showLastButton.emit(true)
+      //   }, 800);
+      // }
+    }
+    //scroll verso l'alto
+    else {
       this.scrollBarPosition = window.document.documentElement.scrollTop;
 
-    //   if (this.scrollBarPosition === 0) {
-
-    //   }
-    //   if (this.scrollBarPosition < this.viewHeight) {
-    //     this.pezzo3state = StatiPuzzle.disappear
-    //   }
-    //   else if (this.scrollBarPosition < (this.viewHeight * 2)) {
-    //     this.pezzo4state = StatiPuzzle.disappear
-    //   }
+      if (this.scrollBarPosition < (this.viewHeight * 0.75)) {
+        this.pezzo3state = StatiPuzzle.disappear
+      }
+      else if (this.scrollBarPosition > (this.viewHeight * 0.75) && this.scrollBarPosition < (this.viewHeight * 1.75)) {
+        this.pezzo4state = StatiPuzzle.disappear
+      }
+      // else if (this.scrollBarPosition > (this.viewHeight * 1.75) && this.scrollBarPosition < (this.viewHeight * 2.75)) {
+      //   setTimeout(() => {
+      //     this.pezzo4state = StatiPuzzle.downRightFast
+      //   }, 50);
+      //   setTimeout(() => {
+      //     this.pezzo3state = StatiPuzzle.downLeftFast
+      //   }, 100);
+      //   setTimeout(() => {
+      //     this.pezzo2state = StatiPuzzle.leftFast
+      //   }, 150);
+      //   setTimeout(() => {
+      //     this.pezzo1state = StatiPuzzle.rightFast
+      //   }, 200);
+      // }
     }
   }
   constructor() { }
 
   ngOnInit(): void {
+
     this.init()
   }
 
@@ -70,6 +107,7 @@ export class PuzzleComponent implements OnInit {
   }
 
   private init(): void {
+    console.log("altezza schermo: ", this.viewHeight);
 
     this.startPuzzleAnimattions()
   }

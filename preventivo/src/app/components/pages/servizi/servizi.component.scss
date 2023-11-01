@@ -45,9 +45,18 @@
       justify-content: center;
       align-items: center;
     }
-  
+}
+.quarto-blocco{
+  position: relative;
 
-  .parte-destra {
-   
+  .lastbutton{
+    position: absolute;
+    width: 200px;
+    left: calc(50% - (200px * 0.5));
+    bottom: 20%;
+  }
+
+  .lastbutton:hover{
+    transform: scale(1.1);
   }
 }

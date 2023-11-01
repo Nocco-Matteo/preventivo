@@ -1,44 +1,47 @@
+$puzzle-height: 300px;
+
 :host {
   position: fixed;
   height: 100%;
   width: 50%;
+  right: -5%;
 }
 
 .container {
   position: relative;
   height: 100%;
   width: 600px;
+  padding-top: 10%;
 
   [class^="pezzo"] {
     position: absolute;
-    height: 300px;
+    height: $puzzle-height;
     opacity: 0;
   }
-  img{
+  img {
     height: 100%;
   }
   .pezzo1 {
     z-index: 1;
     left: 0;
-    bottom: calc(50% - 150px);
+    bottom: calc(50% - ($puzzle-height * 0.5));
   }
   .pezzo2 {
     z-index: 2;
     transform: rotate(-90deg);
     right: 0;
-    bottom: calc(50% - 150px);
+    bottom: calc(50% - ($puzzle-height * 0.5));
   }
   .pezzo3 {
     z-index: 2;
     transform: rotate(90deg) translateY(-23%);
     left: 0;
-    bottom: calc(50% + 75px);
+    bottom: calc(50% + ($puzzle-height * 0.25));
   }
   .pezzo4 {
     z-index: 3;
     right: 0;
-    bottom: calc(50% + 75px);
+    bottom: calc(50% + ($puzzle-height * 0.25));
     transform: rotate(180deg) translateX(23%);
   }
 }
-

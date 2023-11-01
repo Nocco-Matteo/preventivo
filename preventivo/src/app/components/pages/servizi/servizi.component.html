@@ -1,4 +1,5 @@
-<main class="main" scrolljacking>
+<main class="main"
+      scrolljacking>
   <section class="blocco primo-blocco">
     <div class="parte-sinistra">
       <mat-card class="card">
@@ -22,7 +23,7 @@
       </mat-card>
     </div>
     <div class="parte-destra">
-      <app-puzzle></app-puzzle>
+      <app-puzzle (showLastButton)="showLastButton = true"></app-puzzle>
     </div>
   </section>
   <section class="blocco secondo-blocco">
@@ -79,6 +80,12 @@
     </div>
   </section>
   <section class="blocco quarto-blocco">
-    D
+    <button class="lastbutton"
+            [@buttonAppear]
+            *ngIf="showLastButton"
+            mat-raised-button
+            color="primary">
+      Inizia Adesso!
+    </button>
   </section>
 </main>
