@@ -38,10 +38,6 @@ export class PuzzleComponent implements OnInit {
     if (this.scrollBarPosition < window.document.documentElement.scrollTop) {
       this.scrollBarPosition = window.document.documentElement.scrollTop;
 
-      // if (this.scrollBarPosition < this.viewHeight) {
-      //   this.pezzo1state = StatiPuzzle.right
-      //   this.pezzo2state = StatiPuzzle.left
-      // }
       if (this.scrollBarPosition > (this.viewHeight * 0.5) && this.scrollBarPosition < this.viewHeight) {
         this.pezzo3state = StatiPuzzle.downLeft
       }
@@ -57,16 +53,6 @@ export class PuzzleComponent implements OnInit {
           this.pezzo4state = StatiPuzzle.downRight
         }
       }
-      // else if (this.scrollBarPosition > (this.viewHeight * 2.5)) {
-      //   this.pezzo1state = StatiPuzzle.final1
-      //   this.pezzo2state = StatiPuzzle.final2
-      //   this.pezzo3state = StatiPuzzle.final3
-      //   this.pezzo4state = StatiPuzzle.final4
-
-      //   setTimeout(() => {
-      //     this.showLastButton.emit(true)
-      //   }, 800);
-      // }
     }
     //scroll verso l'alto
     else {
@@ -78,20 +64,6 @@ export class PuzzleComponent implements OnInit {
       else if (this.scrollBarPosition > (this.viewHeight * 0.75) && this.scrollBarPosition < (this.viewHeight * 1.75)) {
         this.pezzo4state = StatiPuzzle.disappear
       }
-      // else if (this.scrollBarPosition > (this.viewHeight * 1.75) && this.scrollBarPosition < (this.viewHeight * 2.75)) {
-      //   setTimeout(() => {
-      //     this.pezzo4state = StatiPuzzle.downRightFast
-      //   }, 50);
-      //   setTimeout(() => {
-      //     this.pezzo3state = StatiPuzzle.downLeftFast
-      //   }, 100);
-      //   setTimeout(() => {
-      //     this.pezzo2state = StatiPuzzle.leftFast
-      //   }, 150);
-      //   setTimeout(() => {
-      //     this.pezzo1state = StatiPuzzle.rightFast
-      //   }, 200);
-      // }
     }
   }
   constructor() { }

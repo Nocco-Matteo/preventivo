@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app.routing';
 import { SharedModule } from './modules/shared.module';
 import { PreventivoEffects } from './store/effects/preventivo.effects';
 import { preventivoReducer } from './store/reducers/preventivo.reducers';
+import { ContattiComponent } from './components/pages/contatti/contatti.component';
 
 
 

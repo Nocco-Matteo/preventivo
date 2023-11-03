@@ -14,9 +14,7 @@ import { PuzzleComponent } from 'src/app/components/pages/servizi/puzzle/puzzle.
     CommonModule,
     SharedModule,
     ServiziRoutingModule,
-    MatCardModule,
     MatDividerModule,
-    MatButtonModule
   ]
 })
 export class ServiziModule { }

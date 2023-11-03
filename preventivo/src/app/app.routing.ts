@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/servizi/servizi.module').then(m => m.ServiziModule),
   },
   {
+    path: 'contatti',
+    loadChildren: () => import('./modules/contatti/contatti.module').then(m => m.ContattiModule)
+  },
+  {
     path: '**',
     redirectTo: '/home',
   },

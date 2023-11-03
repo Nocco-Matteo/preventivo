@@ -1,0 +1,82 @@
+@import "../../../../assets/styles/variables.scss";
+
+:host{
+    height: 100%;
+}
+.contact-container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px; /* Distanza tra le due colonne */
+  }
+  
+  .contact-content, .contact-form {
+    padding: 5%;
+    flex: 1; /* Entrambe le colonne hanno la stessa larghezza */
+  }
+  
+  .contact-form {
+    max-width: 400px; /* Imposta una larghezza massima per il form se necessario */
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* Distanza tra gli elementi del form */
+      }
+      input, textarea {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button {
+        padding: 10px;
+        background-color: #005f73;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #003f53;
+      }
+  }
+  
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5em;
+  }
+  
+  p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 1em;
+  }
+  
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Aggiunge spazio tra i link */
+    margin-top: 20px;
+  }
+  
+  .social-icon {
+    transition: transform 0.3s ease;
+  }
+  
+  .social-icon:hover {
+    transform: scale(1.1); /* Effetto di ingrandimento all'hover */
+  }
+  
+  /* Opzionalmente, puoi aggiungere colori personalizzati per ogni icona social */
+  .twitter {
+    color: #1DA1F2;
+  }
+  
+  .facebook {
+    color: #4267B2;
+  }
+  
+  .linkedin {
+    color: #0077B5;
+  }
+  
