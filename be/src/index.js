@@ -2,6 +2,17 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const mysql = require('mysql');
+
+const connection = mysql.createConnection({
+  host: 'ls-f5acb1c4cc87577ff273e08e08bfb6a28e577e3d.c9cztrwojkuy.eu-west-3.rds.amazonaws.com',
+  user: 'dbmasteruser',
+  password: 'II?LG.Y[I!o+G+s9ozVgml3<n5BaH%D<',
+  database: 'db'
+});
+
+// Connette al database
+connection.connect();
 
 function createRouter() {
   const router = express.Router();
@@ -96,7 +107,21 @@ function createRouter() {
 
     }
   })
+  router.get('/', async function (req, res, next) {
+    try {
 
+      connection.query('SELECT * FROM sezioni', function (error, results, fields) {
+        if (error) {
+          throw error;
+        }
+        // Invia i risultati al client
+        res.json(results);
+      });
+      const response = []
+    } catch (error) {
+
+    }
+  })
   return router;
 }
 
